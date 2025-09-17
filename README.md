@@ -1,9 +1,38 @@
-In this program I rendered a dynamic Rubik's cube using OpenGL in C++.
+In this program I implemented a ray tracer from scratch.
 
-Keyboard keys: • "R" – press state for right wall rotation (90 degrees clockwise). • "L" – press state for left wall rotation (90 degrees clockwise). • "U" – press state for up wall rotation (90 degrees clockwise). • "D" – press state for down wall rotation (90 degrees clockwise). • "B" – press state for back wall rotation (90 degrees clockwise). • "F" – press state for front wall rotation (90 degrees clockwise). • " " (Space) – press state for flipping rotation direction (from clockwise to counterclockwise or vice versa). • "Z" – press state: dividing rotation angle by 2 (until minimum of 45). • "A" – press state: multiply rotation angle by 2 (until maximum of 180). • "M" -press state: mix the cube by doing random rotations. Notice: The rotation directions are only relative to the cube initial camera view.
+Ray tracing is a rendering technique for generating an image by tracing the path of light through pixels in an image
+plane and simulating the effects of its encounters with virtual objects.
+A ray tracer shoots rays from the observer’s eye through a screen and into a scene of objects.
+It calculates the ray’s intersection with the scene objects, finds the nearest intersection and calculates the color of
+the surface according to its material and lighting conditions.
 
-Mouse keys: • Moving while holding left button will rotate the whole Rubik's cube. • Moving while holding the right button will move the camera up, down, left or right (can also use Arrow keys). • Scrolling up and down will move the camera along the Z axis backward and forward
+Rendering Pipeline:
 
-Picking mode: • By using "P" key you can pick a specific cube with the mouse, for translation of the cube use the left mouse button and for rotation of the cube use the right mouse button(disabled by pressing the "P" key again). Notice: After using this mode the cube will be destroyed.
+• Parse the scene description file into structured data.
+• For each pixel:
+    • Shoot a ray through its center (or multiple for anti-aliasing).
+    • Check intersections with objects (spheres, planes).
+    • Determine the nearest hit point.
+    • Compute color using Phong shading with contributions from all lights.
+    • Add shadow checks.
+    • Handle recursive reflection and transparency rays if needed.
+• Output the final image.
+
+The project required you to build a small rendering engine with support for:
+  •Geometric primitives: Spheres, planes, background.
+  •Lighting: Ambient light, directional lights, and spotlights.
+  •Materials: Phong model (ambient, diffuse, specular, shininess).
+  •Shadows: Hard shadows via secondary rays.
+  •Reflections & Transparency: With recursive ray tracing (up to 5 steps).
+  •Anti-aliasing (bonus): Multi-sampling per pixel
+
+The scene was described using a text file, containing:
+  •Camera position (e)
+  •Ambient light (a)
+  •Light sources (d, p, i)
+  •Objects: spheres/planes (o), reflective (r), transparent (t)
+  •Object colors & shininess (c)
+
+This file format defined the geometry, materials, and lights of your virtual world.
 
 how to run ? • use "make" command to run the makefile • enter bin directory and run "./main scene1.txt" command
