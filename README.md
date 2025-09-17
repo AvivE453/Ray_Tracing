@@ -54,7 +54,7 @@ Rendering Pipeline:
 
 
 
-how to run :
+how to run:
   • Use "make" command to run the makefile.
   • Use "cd bin" command to enter bin directory and then run "./main scene1.txt" command.
   • The rendered image will be saved at bin/res/textures/Scene.png.
