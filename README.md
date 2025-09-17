@@ -1,4 +1,4 @@
-In this program I implemented a ray tracer from scratch.
+This project implements a ray tracer from scratch.
 
 Ray tracing is a rendering technique for generating an image by tracing the path of light through pixels in an image
 plane and simulating the effects of its encounters with virtual objects.
@@ -13,12 +13,12 @@ The project rendering engine supports :
   • Lighting: Ambient light, directional lights, and spotlights.
   • Material colors: Phong model (ambient, diffuse, specular, shininess).
   • Shadows: Hard shadows via secondary rays.
-  • Reflections (mirror object) & Transparency: With recursive ray tracing .
+  • Reflections (mirror object) & Transparency: With recursive ray tracing(up to 5 depth levels).
 
 
 The 3D scene for rendering is defined by using a text file.
 This file format defined the geometry, materials, and lights of your virtual world.
-The file containing:
+The scene file contains:
 
     ● "e" (eye) – Represents the Camera position coordinates (x,y,z).The 4th coordinate will always be 1.0 and can be ignored.
     ● "a" (ambient) – Represents the Global Ambient Intensity (r,g,b).The 4th coordinate will always be 1.0 and can be ignored.
@@ -54,4 +54,8 @@ Rendering Pipeline:
 
 
 
-how to run ? • use "make" command to run the makefile • enter bin directory and run "./main scene1.txt" command
+how to run :
+  • use "make" command to run the makefile.
+  • use "cd bin" command to enter bin directory and then run "./main scene1.txt" command.
+  • the picture of the scene is saved in bin -> res -> textures -> Scene.png
+
