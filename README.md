@@ -9,7 +9,7 @@ the surface according to its material and lighting conditions.
 
 The project rendering engine supports :
 
-  • Geometric primitives: Spheres, planes, background.
+  • Geometric primitive objects: Spheres, planes, background.
   • Lighting: Ambient light, directional lights, and spotlights.
   • Material colors: Phong model (ambient, diffuse, specular, shininess).
   • Shadows: Hard shadows via secondary rays.
