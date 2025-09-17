@@ -6,6 +6,30 @@ A ray tracer shoots rays from the observer’s eye through a screen and into a s
 It calculates the ray’s intersection with the scene objects, finds the nearest intersection and calculates the color of
 the surface according to its material and lighting conditions.
 
+The project rendering engine supports :
+  • Geometric primitives: Spheres, planes, background.
+  • Lighting: Ambient light, directional lights, and spotlights.
+  • Materials color: Phong model (ambient, diffuse, specular, shininess).
+  • Shadows: Hard shadows via secondary rays.
+  • Reflections (mirror object) & Transparency: With recursive ray tracing .
+
+The 3D scene for rendering defined by using a text file, containing:
+    ● "e" (eye) – Represents the Camera position coordinates (x,y,z).The 4th coordinate will always be 1.0 and can be ignored.
+    ● "a" (ambient) – Represents the Global Ambient Intensity (r,g,b).The 4th coordinate will always be 1.0 and can be ignored.
+    The next parameters represent the information about the light sources and objects:
+        ● "d" (direction) – Represents the Light source direction (x, y, z). The 4th coordinate value will be 0.0 for Directional light and 1.0 for Spotlight.
+        ● "p" (position) – (Only for spotlights) Represents the Spotlight position coordinates (x,y,z).The 4th coordinate value represents the cutoff angle cosine value.("p" order corresponds to the "d" spotlights order)
+        ● "i" (intensity) – Represents the Light source Intensity (r, g, b).The 4th coordinate will always be 1.0 and can be ignored.("i" order corresponds to the "d" order)
+        ● "o" (object), "r" (reflective) or "t" (transparent) – Represents Spheres and Planes, where:
+            - Spheres (x,y,z,r) – where (x,y,z) is the center position and r is the radius (r>0).
+            - Planes (a,b,c,d) – where (a,b,c,d) represents the coefficients of the plane equation (d<=0).
+            Notice the following things:
+                - The 4th coordinate determines if the object is a sphere or a plane.
+                - Spheres and Planes can be either normal objects, reflective objects or transparent objects and will require different handling based on their type.
+                - For "r" (reflective) and "t" (transparent) and next "c" parameter values can be ignored.
+        ● "c” (color) - Represents the Ambient Material and Diffuse Material color (r,g,b).The 4th coordinate represents the Shininess value.("c" order corresponds to the "o", "r", "t" order)
+
+
 Rendering Pipeline:
 
 • Parse the scene description file into structured data.
@@ -18,20 +42,9 @@ Rendering Pipeline:
     • Handle recursive reflection and transparency rays if needed.
 • Output the final image.
 
-The project required you to build a small rendering engine with support for:
-  •Geometric primitives: Spheres, planes, background.
-  •Lighting: Ambient light, directional lights, and spotlights.
-  •Materials: Phong model (ambient, diffuse, specular, shininess).
-  •Shadows: Hard shadows via secondary rays.
-  •Reflections & Transparency: With recursive ray tracing (up to 5 steps).
-  •Anti-aliasing (bonus): Multi-sampling per pixel
 
-The scene was described using a text file, containing:
-  •Camera position (e)
-  •Ambient light (a)
-  •Light sources (d, p, i)
-  •Objects: spheres/planes (o), reflective (r), transparent (t)
-  •Object colors & shininess (c)
+
+
 
 This file format defined the geometry, materials, and lights of your virtual world.
 
